@@ -1,35 +1,35 @@
 # Employee
 
 run 
-command "docker-compose up"
+command "docker-compose up".
 
-create token
-command : http://localhost:3000/
+create token.
+GET : http://localhost:3000/.
 
-add to header
-header : x-access-token 
+add to header.
+"x-access-token".
 
-basic authentication
+basic authentication - 
 user : test
 password : test123
 
-add employee
-POST : http://localhost:3000/employee/add
-provide name, salary, currency, department, sub_department
+add employee.
+POST : http://localhost:3000/employee/add.
+provide name, salary, currency, department, sub_department.
 
-delete employee
-DELETE : http://localhost:3000/employee/delete/<emp_name>
+delete employee.
+DELETE : http://localhost:3000/employee/delete/<emp_name>.
 
-calculate stats for all employees
-GET : http://localhost:3000/employee/SS
+calculate stats for all employees.
+GET : http://localhost:3000/employee/SS.
 
-claculate stats for employees on contract
-GET : http://localhost:3000/employee/SS-oncontract
+claculate stats for employees on contract.
+GET : http://localhost:3000/employee/SS-oncontract.
 
-calculate employee stats based on department
-GET : http://localhost:3000/employee/SS-dep
+calculate employee stats based on department.
+GET : http://localhost:3000/employee/SS-dep.
 
-calcilate employee stats for sub department
-http://localhost:3000/employee/SS-subdep
+calcilate employee stats for sub department.
+http://localhost:3000/employee/SS-subdep.
 
-Used postman as API test tool
+Used postman as API test tool.
