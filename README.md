@@ -30,6 +30,6 @@ calculate employee stats based on department.
 GET : http://localhost:3000/employee/SS-dep.
 
 calculate employee stats for sub department.
-http://localhost:3000/employee/SS-subdep.
+GET : http://localhost:3000/employee/SS-subdep.
 
 Used postman as API test tool.
