@@ -7,14 +7,13 @@ const { stringify } = require('querystring');
 const basicAuth = require('express-basic-auth')
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-//const jwt = require('njwt')
 
 //define schema for data validation
 const employeeSchema = {
   name: {
     notEmpty: true,
     type: stringify,
-    errorMessage: "user field should be alid string"
+    errorMessage: "user field should be valid string"
   },
   salary: {
     notEmpty: true,
@@ -24,17 +23,17 @@ const employeeSchema = {
   currency: {
     notEmpty: true,
     type: stringify,
-    errorMessage: "currency field should be alid string"
+    errorMessage: "currency field should be valid string"
   },
   department: {
     notEmpty: true,
     type: stringify,
-    errorMessage: "department field should be alid string"    
+    errorMessage: "department field should be valid string"    
   },
   sub_department: {
     notEmpty: true,
     type: stringify,
-    errorMessage: "sub-department field should be alid string"  
+    errorMessage: "sub_department field should be valid string"  
   }
 }
 
@@ -61,7 +60,6 @@ function getUnauthorizedResponse(req) {
       : 'No credentials provided'
 }
 
-
 const port = 3000;
 
 var employees;
@@ -73,9 +71,7 @@ fs.readFile("dataset.json", function(err, data) {
   if (err) throw err;
  
   // Converting to JSON
-  employees = JSON.parse(data);
-    
-  console.log(employees); // Print employees 
+  employees = JSON.parse(data); 
 });
 
 // Configuring body parser middleware
@@ -113,7 +109,7 @@ app.post('/employee/add', isAuthorized, validate(checkSchema(employeeSchema)), (
   });
   res.status(200).json({
     success: true,
-    message: 'employee is added to the database',    
+    message: 'employee is added to the json',    
   });
 });
 
@@ -176,14 +172,21 @@ app.get('/', (req, res) => {
 
 function isAuthorized(req, res, next) {
   const inputtoken = req.headers["x-access-token"];
-  const decoded = jwt.verify(inputtoken, 'Secret_key');
-  console.log(decoded);
-  if (decoded.user_id === 'test') {
-    next();
-  } else {
-    res.status(401);
-    res.send('Not permitted. Please provide valid token.');
-  }
+  var decoded;
+  jwt.verify(inputtoken, 'Secret_key', (err, decoded) => {
+    if(err) {
+      res.send({msg:"Not permitted. Please provide valid token."})
+    } else {
+      if (decoded.user_id === 'test') {
+        next();
+      } else {
+        //res.status(401);
+        res.send({msg:"Not permitted. Please provide valid token."})
+      }
+    }
+  })
+
+  
 }
 
 //calculate stats for all dataset
