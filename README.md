@@ -29,7 +29,7 @@ GET : http://localhost:3000/employee/SS-oncontract.
 calculate employee stats based on department.
 GET : http://localhost:3000/employee/SS-dep.
 
-calcilate employee stats for sub department.
+calculate employee stats for sub department.
 http://localhost:3000/employee/SS-subdep.
 
 Used postman as API test tool.
