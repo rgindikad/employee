@@ -1,10 +1,11 @@
-# employee
+# Employee
 
 run 
 command "docker-compose up"
 
-craete token
+create token
 command : http://localhost:3000/
+
 add to header
 header : x-access-token 
 
