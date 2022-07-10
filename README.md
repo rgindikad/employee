@@ -39,8 +39,8 @@ GET : http://localhost:3000/employee/SS-subdep.
 
 Unit Test
 
-install jest and supertest. npm install --save-dev jest supertest.
-run command. npm test.
+install jest and supertest. "npm install --save-dev jest supertest".
+run command "npm test".
 
 Spetial Note:
 I learnt following technologies to implement this.
