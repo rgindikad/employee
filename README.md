@@ -2,6 +2,8 @@
 
 Used postman as API test tool.
 
+extract the zip file
+
 run 
 command "docker-compose up".
 
