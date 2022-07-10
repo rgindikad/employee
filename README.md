@@ -42,4 +42,4 @@ run command. npm test.
 
 Spetial Note:
 I learnt following technologies to implement this.
-node.js, express.js, json, jtest, supertest, web services
+node.js, express.js, json, jest, supertest, web services
