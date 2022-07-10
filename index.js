@@ -7,14 +7,14 @@ const {body, checkSchema, validationResult} = require('express-validator');
 const { stringify } = require('querystring');
 const basicAuth = require('express-basic-auth')
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
+//require("dotenv").config();
 
 //define schema for data validation
 const employeeSchema = {
   name: {
     notEmpty: true,
     type: stringify,
-    errorMessage: "user field should be valid string"
+    errorMessage: "name field should be valid string"
   },
   salary: {
     notEmpty: true,
@@ -142,18 +142,21 @@ function calculateStats(employeeData) {
   for(var i = 0; i < employeeData.length; i++) {
 
     if (min === 0 || min > Number(employeeData[i].salary)) {
-      min = employeeData[i].salary;
+      min = Number(employeeData[i].salary);
     }
 
     if (max < Number(employeeData[i].salary)) {
-      max = employeeData[i].salary;
+      max = Number(employeeData[i].salary);
     }
-    console.log(min);
-    console.log(employeeData[i].salary);
-    
-    totalSalary = totalSalary + Number(employeeData[i].salary);    
+    //console.log(min);
+    //console.log(employeeData[i].salary);
+    if (Number(employeeData[i].salary) > 0) {
+      totalSalary = totalSalary + Number(employeeData[i].salary); 
+    }
   }
-  const avg = totalSalary/employeeData.length;
+  let avg = totalSalary/employeeData.length;
+
+
   var stats = [
     {      
       avg: avg,
@@ -166,9 +169,7 @@ function calculateStats(employeeData) {
 }
 
 app.get('/', (req, res) => {
-  //console.log(req.token);
-  
-  res.json(token);
+  res.status(200).json({ 'token': token }); 
 });
 
 function isAuthorized(req, res, next) {
@@ -190,7 +191,7 @@ function isAuthorized(req, res, next) {
   
 }
 
-//calculate stats for all dataset
+//calculate stats for all employees
 app.get('/employee/SS', isAuthorized, (req, res) => {
   
   const stats = calculateStats(employees)
@@ -270,6 +271,6 @@ app.get('/employee/SS-subdep', isAuthorized, (req, res) => {
   res.json(deptStats);
 });
 
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+//module.exports = app.listen(port, () => console.log(Example app listening on port ${port}!));
+module.exports = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 

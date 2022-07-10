@@ -33,3 +33,8 @@ calculate employee stats for sub department.
 GET : http://localhost:3000/employee/SS-subdep.
 
 Used postman as API test tool.
+
+Unit Test
+
+install yest and supertest. npm install --save-dev jest supertest
+run command. npm test.

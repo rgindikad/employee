@@ -66,13 +66,17 @@
     "sub_department": "Platform"
   },
   {
-    "name": "yyy",
+    "name": "eeeeeee",
     "salary": "3333",
-    "department": "fggg"
+    "department": "fggg",
+    "sub_department": "dd",
+    "currency": "$"
   },
   {
-    "name": "yyy",
-    "salary": "3333",
-    "department": "fggg"
+    "name": "eeeeeee",
+    "salary": "uuu",
+    "department": "fggg",
+    "sub_department": "dd",
+    "currency": "$"
   }
 ]
