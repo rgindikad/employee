@@ -1,5 +1,7 @@
 # Employee
 
+Used postman as API test tool.
+
 run 
 command "docker-compose up".
 
@@ -32,9 +34,12 @@ GET : http://localhost:3000/employee/SS-dep.
 calculate employee stats for sub department.
 GET : http://localhost:3000/employee/SS-subdep.
 
-Used postman as API test tool.
 
 Unit Test
 
-install yest and supertest. npm install --save-dev jest supertest
+install jest and supertest. npm install --save-dev jest supertest
 run command. npm test.
+
+Spetial Note:
+I learnt following technologies to implement this.
+node.js, express.js, json, jtest, supertest, web services
